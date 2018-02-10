@@ -1,0 +1,25 @@
+version: '2.0'
+
+services:
+    postgres:
+        build:
+            context: .
+        container_name: postgres
+        environment:
+            POSTGRES_PASSWORD: postgres
+            TZ: "America/New_York"
+        hostname: postgres
+        image: postgresql:10.1
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
+        ports:
+            - 5432:5432
+        restart: unless-stopped
+        volumes:
+            - ./vols-ro/postgres-initdb:/docker-entrypoint-initdb.d
+            - ./vols-rw/data:/var/lib/postgresql/data
+            - ./vols-ro/etc:/etc/postgres
+            - ./vols-rw/log:/var/log/postgres

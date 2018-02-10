@@ -1,0 +1,2 @@
+DROP EXTENSION IF EXISTS timescaledb;
+CREATE EXTENSION timescaledb SCHEMA public;

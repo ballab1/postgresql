@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source "${TOOLS}/04.downloads/01.PG"
+
+apk del .fetch-deps .build-deps
+
+cd /
+rm -rf "$pg_srcdir"
+rm -rf /usr/src/quantile
+rm -rf /usr/src/timescaledb
+rm -rf /usr/local/share/doc
+rm -rf /usr/local/share/man
+
+find /usr/local -name '*.a' -type f -delete

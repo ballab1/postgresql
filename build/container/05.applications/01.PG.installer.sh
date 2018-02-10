@@ -1,0 +1,79 @@
+#!/bin/bash
+
+#set -o verbose
+set -o errexit
+set -o nounset
+#set -o xtrace
+
+source "${TOOLS}/04.downloads/01.PG"
+source "${TOOLS}/04.downloads/02.CG"
+source "${TOOLS}/04.downloads/03.CS"
+
+
+# alpine includes "postgres" user/group in base install
+#   /etc/passwd:22:postgres:x:70:70::/var/lib/postgresql:/bin/sh
+#   /etc/group:34:postgres:x:70:
+# the home directory for the postgres user, however, is not created by default
+# see https://github.com/docker-library/postgres/issues/274
+
+
+mkdir -p /usr/local/include
+mkdir -p "$pg_srcdir"
+tar --extract --file "${PG['file']}" --directory "$pg_srcdir" --strip-components 1
+cd "$pg_srcdir"
+
+# update "DEFAULT_PGSOCKET_DIR" to "/var/run/postgresql" (matching Debian)
+# see https://anonscm.debian.org/git/pkg-postgresql/postgresql.git/tree/debian/patches/51-default-sockets-in-var.patch?id=8b539fcb3e093a521c095e70bdfa76887217b89f
+awk '$1 == "#define" \
+     $2 == "DEFAULT_PGSOCKET_DIR" \
+     $3 == "\"/tmp\"" \
+     { $3 = "\"/var/run/postgresql\""; print; next } { print }' \
+     src/include/pg_config_manual.h > src/include/pg_config_manual.h.new
+
+grep '/var/run/postgresql' src/include/pg_config_manual.h.new && mv src/include/pg_config_manual.h.new src/include/pg_config_manual.h
+
+# explicitly update autoconf config.guess and config.sub so they support more arches/libcs
+cp "${CG['file']}" config/
+cp "${CS['file']}" config/
+    
+# configure options taken from:
+# https://anonscm.debian.org/cgit/pkg-postgresql/postgresql.git/tree/debian/rules?h=9.5
+declare gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)"
+./configure \
+    --build="$gnuArch" \
+    --enable-integer-datetimes \
+    --enable-thread-safety \
+    --enable-tap-tests \
+    --disable-rpath \
+    --with-uuid=e2fs \
+    --with-gnu-ld \
+    --with-pgport=5432 \
+    --with-system-tzdata=/usr/share/zoneinfo \
+    --prefix=/usr/local \
+    --with-includes=/usr/local/include \
+    --with-libraries=/usr/local/lib \
+    --with-ldap \
+    --with-openssl \
+    --with-libxml \
+    --with-libxslt
+
+# skip debugging info -- we want tiny size instead
+#   --enable-debug \
+# these make our image abnormally large (at least 100MB larger), which seems uncouth for an "Alpine" (ie, "small") variant :)
+#   --with-krb5 \
+#   --with-gssapi \
+#   --with-tcl \
+#   --with-perl \
+#   --with-python \
+#   --with-pam \
+        
+make -j "$(nproc)" world
+make install-world
+make -C contrib install
+
+declare runDeps="$( scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
+                  | tr ',' '\n' \
+                  | sort -u \
+                  | awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' )"
+
+apk add --no-cache --virtual .postgresql-rundeps $runDeps

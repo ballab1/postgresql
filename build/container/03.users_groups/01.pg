@@ -1,0 +1,9 @@
+
+declare -A pg=()
+
+pg['user']=${pg_user:-'postgres'}
+pg['uid']=${pg_uid:-$(getent passwd postgres | cut -d: -f3)}
+pg['group']=${pg_group:-'postgres'}
+pg['gid']=${pg_gid:-$(getent group postgres | cut -d: -f3)}
+pg['home']="${PGDATA:-/var/lib/postgresql/data}"
+pg['shell']=/sbin/bash

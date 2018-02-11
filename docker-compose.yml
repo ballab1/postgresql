@@ -11,8 +11,8 @@ services:
                 - alpine:3.6
             context: .
         container_name: postgres
-#        depends_on:
-#            - base
+        depends_on:
+            - base
         environment:
             POSTGRES_PASSWORD: postgres
         hostname: postgres
@@ -30,3 +30,13 @@ services:
             - ./vols-rw/data:/var/lib/postgresql/data
             - ./vols-ro/etc:/etc/postgres
             - ./vols-rw/log:/var/log/postgres 
+
+    base:
+        build:
+            args:
+                CODE_VERSION: alpine:3.6
+                TZ: "America/New_York"
+            cache_from:
+                - alpine:3.6
+            context: ../base_container
+        image: base_container:20180210

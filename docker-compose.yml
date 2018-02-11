@@ -1,15 +1,22 @@
-version: '2.0'
+version: '3.5'
 
 services:
     postgres:
         build:
+            args:
+                CODE_VERSION: base_container:20180210
+            context: .
+            cache_from:
+                - base_container:20180210
+                - alpine:3.6
             context: .
         container_name: postgres
+#        depends_on:
+#            - base_container:20180210
         environment:
             POSTGRES_PASSWORD: postgres
-            TZ: "America/New_York"
         hostname: postgres
-        image: postgresql:10.1
+        image: postgresql-10.1:20180210
         logging:
             driver: "json-file"
             options:
@@ -22,4 +29,4 @@ services:
             - ./vols-ro/postgres-initdb:/docker-entrypoint-initdb.d
             - ./vols-rw/data:/var/lib/postgresql/data
             - ./vols-ro/etc:/etc/postgres
-            - ./vols-rw/log:/var/log/postgres
+            - ./vols-rw/log:/var/log/postgres 

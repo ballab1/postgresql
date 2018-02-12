@@ -2,7 +2,7 @@
 
 source "${TOOLS}/04.downloads/01.PG"
 
-apk del .fetch-deps .build-deps
+#apk del .fetch-deps .build-deps
 
 cd /
 rm -rf "$pg_srcdir"

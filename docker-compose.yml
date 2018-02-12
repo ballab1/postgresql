@@ -4,15 +4,14 @@ services:
     postgres:
         build:
             args:
-                CODE_VERSION: base_container:20180210
+                FROM_BASE: base_container:20180210
+                CONTAINER_VERSION: 1.0.0
             context: .
             cache_from:
                 - base_container:20180210
                 - alpine:3.6
             context: .
         container_name: postgres
-        depends_on:
-            - base
         environment:
             POSTGRES_PASSWORD: postgres
         hostname: postgres
@@ -34,7 +33,8 @@ services:
     base:
         build:
             args:
-                CODE_VERSION: alpine:3.6
+                FROM_BASE: alpine:3.6
+                CONTAINER_VERSION: 1.0.0
                 TZ: "America/New_York"
             cache_from:
                 - alpine:3.6

@@ -1,9 +1,14 @@
-ARG CODE_VERSION=base_container:20180210
-FROM $CODE_VERSION
+ARG FROM_BASE=base_container:20180210
+FROM $FROM_BASE
+
+# version of this docker image
+ARG CONTAINER_VERSION=1.0.0 
+LABEL version=$CONTAINER_VERSION  
 
 # LABEL:  postgres version _ quantile version _ timedb version
-ENV VERSION='p10.1_q1.1.2_t0.8.0'
-LABEL version=$VERSION
+ARG PGVERSION='p10.1_q1.1.2_t0.8.0'
+LABEL postgres_version=$PGVERSION
+
 
 # make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default
 # alpine doesn't require explicit locale-file generation

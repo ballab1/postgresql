@@ -3,10 +3,10 @@
 declare -A PG=()
 
 PG['major']=10
-PG['version']=${PG['version']:-'10.1'}
+PG['version']=${PG['version']:-'10.2'}
 PG['file']="/tmp/postgresql-${PG['version']}.tar.bz2"
 PG['url']="https://ftp.postgresql.org/pub/source/v${PG['version']}/postgresql-${PG['version']}.tar.bz2"
-PG['sha256']="3ccb4e25fe7a7ea6308dea103cac202963e6b746697366d72ec2900449a5e713"
+PG['sha256']="fe32009b62ddb97f7f014307ce9d0edb6972f5a698e63cb531088e147d145bad"
 PG['data']="${PGDATA:-/var/lib/postgresql/data}"
 
 #directories

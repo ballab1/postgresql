@@ -5,9 +5,9 @@ FROM $FROM_BASE
 ARG CONTAINER_VERSION=1.0.0 
 LABEL version=$CONTAINER_VERSION  
 
-# LABEL:  postgres version _ quantile version _ timedb version
-ARG PGVERSION='p10.2_q1.1.2_t0.8.0'
-LABEL postgres_version=$PGVERSION
+LABEL postgres_version=10.2
+LABEL quantile_version=1.1.2
+LABEL timescaledb_version=0.8.0
 
 
 # make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default

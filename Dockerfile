@@ -20,8 +20,8 @@ COPY build /tmp/
 
 # build content
 RUN set -o verbose \
-    && chmod u+rwx /tmp/container/build.sh \
-    && /tmp/container/build.sh 'POSTGRESQL'
+    && chmod u+rwx /tmp/build.sh \
+    && /tmp/build.sh 'POSTGRESQL'
 RUN rm -rf /tmp/*
 
 EXPOSE 5432

@@ -15,13 +15,16 @@ LABEL timescaledb_version=0.8.0
 ENV LANG en_US.utf8
 ENV PGDATA /var/lib/postgresql/data
 
+# set to non zero for the framework to show verbose action scripts
+ARG DEBUG_TRACE=0
+
 # Add configuration and customizations
 COPY build /tmp/
 
 # build content
 RUN set -o verbose \
-    && chmod u+rwx /tmp/container/build.sh \
-    && /tmp/container/build.sh 'POSTGRESQL'
+    && chmod u+rwx /tmp/build.sh \
+    && /tmp/build.sh 'POSTGRESQL'
 RUN rm -rf /tmp/*
 
 EXPOSE 5432

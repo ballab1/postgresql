@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "${TOOLS}/04.downloads/01.PG" 
+source "${CBF['action']}/03.downloads/01.PG" 
 
 mkdir -p "$postgresHome"
 mkdir -p /var/run/postgresql

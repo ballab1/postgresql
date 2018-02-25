@@ -1,2 +1,5 @@
 # core Packages
-apk add --no-cache --virtual .fetch-deps ca-certificates openssl git tar
+
+if [ "${CBF['os_id']}" = 'alpine' ]; then
+    apk add --no-cache --virtual .fetch-deps ca-certificates openssl git tar
+fi

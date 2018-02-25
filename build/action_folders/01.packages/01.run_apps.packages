@@ -1,3 +1,5 @@
 # run Packages
 
-apk add --no-cache su-exec openssl
+if [ "${CBF['os_id']}" = 'alpine' ]; then
+    apk add --no-cache su-exec openssl
+fi

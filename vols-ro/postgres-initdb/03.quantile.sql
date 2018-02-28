@@ -1,2 +1,0 @@
-DROP EXTENSION IF EXISTS quantile;
-CREATE EXTENSION quantile SCHEMA public;

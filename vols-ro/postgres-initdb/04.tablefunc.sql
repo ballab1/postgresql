@@ -1,2 +1,0 @@
-DROP EXTENSION IF EXISTS tablefunc;
-CREATE EXTENSION tablefunc SCHEMA public;

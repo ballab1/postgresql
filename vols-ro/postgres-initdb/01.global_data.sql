@@ -1,3 +1,5 @@
+
+
 --
 -- PostgreSQL database cluster dump
 --
@@ -32,6 +34,8 @@ CREATE ROLE ballab1;
 ALTER ROLE ballab1 WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION NOBYPASSRLS;
 CREATE ROLE burnsw1;
 ALTER ROLE burnsw1 WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS VALID UNTIL 'infinity';
+CREATE ROLE c4dev;
+ALTER ROLE c4dev WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;
 CREATE ROLE cfarinel;
 ALTER ROLE cfarinel WITH SUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS VALID UNTIL 'infinity';
 CREATE ROLE chenx10;
@@ -106,7 +110,7 @@ GRANT "CycloneDevOps" TO choig GRANTED BY postgres;
 GRANT "CycloneDevOps" TO knighh1 WITH ADMIN OPTION GRANTED BY postgres;
 GRANT "CycloneDevOps" TO nicholas_messier GRANTED BY postgres;
 GRANT "CycloneDevOps" TO ravalh1 GRANTED BY postgres;
-GRANT "CycloneDevOps" TO reports GRANTED BY ravalh1;
+GRANT "CycloneDevOps" TO reports GRANTED BY postgres;
 GRANT "CycloneDevOps" TO shajep GRANTED BY postgres;
 GRANT "CycloneDevOps" TO zhaoj26 GRANTED BY postgres;
 GRANT "DevEnablement" TO ballab1 GRANTED BY postgres;
@@ -168,11 +172,4 @@ GRANT flt TO knighh1 WITH ADMIN OPTION GRANTED BY postgres;
 GRANT flt TO nicholas_messier GRANTED BY postgres;
 GRANT flt TO shajep GRANTED BY postgres;
 GRANT flt TO svc_ctdciauto GRANTED BY postgres;
-
-
-
-
---
--- PostgreSQL database cluster dump complete
---
 

@@ -12,11 +12,13 @@ services:
                 - base_container:20180217
                 - alpine:3.6
             context: .
+            dockerfile: Dockerfile
         container_name: postgres
         environment:
+            CONTAINER_NAME: postgresql-10.2
             POSTGRES_PASSWORD: postgres
         hostname: postgres
-        image: postgresql-10.1:20180217
+        image: postgresql-10.2:20180217
         logging:
             driver: "json-file"
             options:
@@ -24,21 +26,9 @@ services:
                 max-file: "3"
         ports:
             - 5432:5432
-        restart: unless-stopped
+#        restart: unless-stopped
         volumes:
             - ./vols-ro/postgres-initdb:/docker-entrypoint-initdb.d
             - ./vols-rw/data:/var/lib/postgresql/data
             - ./vols-ro/etc:/etc/postgres
             - ./vols-rw/log:/var/log/postgres 
-
-    base:
-        build:
-            args:
-                CONTAINER_VERSION: 1.0.2
-                DEBUG_TRACE: 0
-                FROM_BASE: alpine:3.6
-                TZ: "America/New_York"
-            cache_from:
-                - alpine:3.6
-            context: ../base_container
-        image: base_container:20180217

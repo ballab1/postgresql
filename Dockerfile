@@ -30,12 +30,12 @@ COPY build /tmp/
 RUN set -o verbose \
     && chmod u+rwx /tmp/build.sh \
     && /tmp/build.sh "$CONTAINER_NAME"
-RUN [[ $DEBUG_TRACE == 0 ]] && rm -rf /tmp/* 
+RUN [[ $DEBUG_TRACE != 0 ]] || rm -rf /tmp/* 
 
 
 EXPOSE 5432
-
 VOLUME $PGDATA
+
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 #CMD ["$CONTAINER_NAME"]

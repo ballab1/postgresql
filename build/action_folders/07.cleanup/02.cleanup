@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source "${CBF['action']}/03.downloads/01.PG"
 
 #apk del .fetch-deps .build-deps
 

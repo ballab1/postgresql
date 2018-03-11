@@ -1,8 +1,5 @@
 #!/bin/bash
 
-source "${CBF['action']}/03.downloads/01.PG"
-source "${CBF['action']}/02.users_groups/01.pg"
-
 chown "${pg['user']}:${pg['group']}" -R "${PG['home']}"
 chown "${pg['user']}:${pg['group']}" -R "${PG['data']}"
 chown "${pg['user']}:${pg['group']}" -R /var/run/postgresql

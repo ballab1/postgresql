@@ -1,4 +1,4 @@
-ARG FROM_BASE=base_container:20180210
+ARG FROM_BASE=base_container:20180211
 FROM $FROM_BASE
 
 # name and version of this docker image
@@ -12,9 +12,12 @@ LABEL org_name=$CONTAINER_NAME \
 ARG DEBUG_TRACE=0
 
 
-LABEL postgres_version=10.2 \
-      quantile_version=1.1.2 \
-      timescaledb_version=0.8.0
+ARG POSTGRES_VERSION=10.3
+ARG QUANTILE_VERSION=quantile-1.1.2
+ARG TIMESCALE_VERSION=0.9.0
+LABEL postgres_version=$POSTGRES_VERSION \
+      quantile_version=$QUANTILE_VERSION \
+      timescaledb_version=$TIMESCALE_VERSION
 
 
 # make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default
@@ -34,7 +37,8 @@ RUN [[ $DEBUG_TRACE != 0 ]] || rm -rf /tmp/*
 
 
 EXPOSE 5432
-VOLUME $PGDATA
+#VOLUME $PGDATA
+VOLUME /var/lib/postgresql/data
 
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]

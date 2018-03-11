@@ -5,10 +5,6 @@ set -o errexit
 set -o nounset
 #set -o xtrace
 
-source "${CBF['action']}/03.downloads/01.PG"
-source "${CBF['action']}/03.downloads/02.CG"
-source "${CBF['action']}/03.downloads/03.CS"
-
 
 # alpine includes "postgres" user/group in base install
 #   /etc/passwd:22:postgres:x:70:70::/var/lib/postgresql:/bin/sh

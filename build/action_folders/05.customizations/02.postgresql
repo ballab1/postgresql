@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source "${CBF['action']}/03.downloads/01.PG" 
-
 mkdir -p "$postgresHome"
 mkdir -p /var/run/postgresql
 mkdir -p "${PG['data']}"

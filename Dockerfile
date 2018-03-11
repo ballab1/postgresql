@@ -1,4 +1,4 @@
-ARG FROM_BASE=base_container:20180210
+ARG FROM_BASE=base_container:20180211
 FROM $FROM_BASE
 
 # name and version of this docker image
@@ -37,7 +37,8 @@ RUN [[ $DEBUG_TRACE != 0 ]] || rm -rf /tmp/*
 
 
 EXPOSE 5432
-VOLUME $PGDATA
+#VOLUME $PGDATA
+VOLUME /var/lib/postgresql/data
 
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]

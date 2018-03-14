@@ -7,10 +7,10 @@ services:
                 CONTAINER_NAME: postgresql-10.2
                 CONTAINER_VERSION: 1.0.5
                 DEBUG_TRACE: 0
-                FROM_BASE: base_container:20180311
+                FROM_BASE: base_container:20180314
             context: .
             cache_from:
-                - base_container:20180311
+                - base_container:20180314
                 - alpine:3.6
             context: .
             dockerfile: Dockerfile
@@ -18,7 +18,7 @@ services:
         environment:
             POSTGRES_PASSWORD: postgres
         hostname: postgres
-        image: postgresql-10.2:20180311
+        image: postgresql-10.2:20180314
         logging:
             driver: json-file
             options:

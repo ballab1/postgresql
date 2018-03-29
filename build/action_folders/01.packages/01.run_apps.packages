@@ -1,5 +1,7 @@
 # run Packages
 
 if [ "${CBF['os_id']}" = 'alpine' ]; then
-    apk add --no-cache su-exec openssl
+    declare PKGS='su-exec openssl'
+    package.checkIfInstalled "$PKGS"
+    apk add --no-cache $PKGS
 fi

@@ -1,6 +1,9 @@
 # build Packages
 
 if [ "${CBF['os_id']}" = 'alpine' ]; then
-    apk add --no-cache --virtual .build-deps bison cmake coreutils dpkg flex gcc make perl-utils perl-ipc-run py2-pip python2-dev \
-                                             dpkg-dev libc-dev libedit-dev libxml2-dev libxslt-dev openldap-dev util-linux-dev zlib-dev
+    declare PKGS='bison cmake coreutils dpkg flex gcc make perl-utils perl-ipc-run py2-pip python2-dev'
+    PKGS="${PKGS} dpkg-dev libc-dev libedit-dev libxml2-dev libxslt-dev openldap-dev util-linux-dev zlib-dev"
+
+    package.checkIfInstalled "$PKGS"
+    apk add --no-cache --virtual .build-deps $PKGS
 fi

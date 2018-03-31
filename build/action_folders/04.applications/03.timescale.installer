@@ -1,16 +1,10 @@
 #!/bin/bash
 
-#set -o verbose
 set -o errexit
 set -o nounset
-#set -o xtrace
 
-declare -r TIMESCALE_URL="https://github.com/timescale/timescaledb.git"
-
-cd /usr/src
-git clone -q "${TIMESCALE_URL}"
-cd /usr/src/timescaledb
-git checkout -b "local/${TIMESCALE_VERSION}" "tags/${TIMESCALE_VERSION}"   
+tar xvf "${TIMESCALEDB['file']}"
+cd "timescaledb-${TIMESCALEDB['version']}"
 
 ./bootstrap
 cd build

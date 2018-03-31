@@ -4,7 +4,8 @@ services:
     postgres:
         build:
             args:
-                CONTAINER_NAME: postgresql-10.2
+                CBF_VERSION: ${CBF_VERSION:-dev}
+                CONTAINER_NAME: postgresql-10.3
                 CONTAINER_VERSION: 1.0.8
                 DEBUG_TRACE: 0
                 FROM_BASE: base_container:20180329

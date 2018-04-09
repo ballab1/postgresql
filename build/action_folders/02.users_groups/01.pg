@@ -1,11 +1,13 @@
+#!/bin/bash
 
-declare -A pg=()
+declare -A pg=(
+     ['user']=${PG_USER:-postgres}
+     ['uid']=${PG_UID:-$(postgres.UID)}
+     ['group']=${PG_GROUP:-postgres}
+     ['gid']=${PG_GID:-$(postgres.GID)}
+     ['home']="${PGDATA:-/var/lib/postgresql/data}"
+     ['shell']=/sbin/bash
+)
+: ${pg['uid']:=1002}
+: ${pg['gid']:=1002}
 
-pg['user']=${pg_user:-postgres}
-pg['uid']=${pg_uid:-$(getent passwd "${pg['user']}" | cut -d: -f3)}
-pg['group']=${pg_group:-postgres}
-pg['gid']=${pg_gid:-$(getent group "${pg['user']}" | cut -d: -f3)}
-pg['home']="${PGDATA:-/var/lib/postgresql/data}"
-pg['shell']=/sbin/bash
-
-export PGDATA="${pg['home']}"

@@ -1,0 +1,24 @@
+# build Packages
+
+declare -a OPTS=( '--virtual' '.buildDependencies' )
+declare -a PKGS=( bison
+                  cmake
+                  coreutils
+                  dpkg
+                  dpkg-dev
+                  flex
+                  gcc
+                  git
+                  libc-dev
+                  libedit-dev
+                  libxml2-dev
+                  libxslt-dev
+                  make
+                  openldap-dev
+                  perl-ipc-run
+                  perl-utils
+                  py2-pip
+                  python2-dev
+                  tar
+                  util-linux-dev
+                  zlib-dev )

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-#apk del .fetch-deps .build-deps
-
 cd /
 rm -rf "$pg_srcdir"
 rm -rf /usr/src/quantile

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+declare -ar env_pg=(
+    'PGDATA="${PGDATA:-/var/lib/postgresql/data}"'
+    'PG_UID=${PG_UID:-$(postgres.UID)}'
+    'PG_GID=${PG_GID:-$(postgres.GID)}'
+)
+
+lib.updateRuntimeEnvironment "${env_pg[*]}" 
+
+lib.copyFileToRuntime 'LIB' 'postgres.bashlib'

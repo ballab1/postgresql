@@ -1,7 +1,0 @@
-# core Packages
-
-if [ "${CBF['os_id']}" = 'alpine' ]; then
-    declare PKGS='git tar'
-    package.checkIfInstalled "$PKGS"
-    apk add --no-cache --virtual .fetch-deps $PKGS
-fi

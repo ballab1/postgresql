@@ -6,6 +6,6 @@ declare -ar env_pg=(
     'PG_GID=${PG_GID:-$(postgres.GID)}'
 )
 
-lib.updateRuntimeEnvironment "${env_pg[*]}" 
+crf.updateRuntimeEnvironment "${env_pg[*]}" 
 
-lib.copyFileToRuntime 'LIB' 'postgres.bashlib'
+crf.copyFileToRuntime 'LIB' 'postgres.bashlib'

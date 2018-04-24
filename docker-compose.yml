@@ -4,6 +4,15 @@ services:
     postgres:
         build:
             args:
+<<<<<<< HEAD
+                CBF_VERSION: ${CBF_VERSION:-dev}
+                CONTAINER_NAME: postgresql-10.3
+                CONTAINER_VERSION: 1.0.8
+                FROM_BASE: base_container:latest
+            context: .
+            cache_from:
+                - base_container:latest
+=======
                 CONTAINER_NAME: postgresql-10.2
                 CONTAINER_VERSION: 1.0.7
                 DEBUG_TRACE: 0
@@ -11,14 +20,20 @@ services:
             context: .
             cache_from:
                 - base_container:20180325
+>>>>>>> master
                 - alpine:3.6
             context: .
             dockerfile: Dockerfile
         container_name: postgres
         environment:
+            DEBUG_TRACE: ${DEBUG_TRACE:-0}
             POSTGRES_PASSWORD: postgres
         hostname: postgres
+<<<<<<< HEAD
+        image: postgresql-10.2:latest
+=======
         image: postgresql-10.2:20180325
+>>>>>>> master
         logging:
             driver: json-file
             options:

@@ -1,13 +1,14 @@
 # postgres
 
-declare -A PG=()
+declare -A PG=(
+    ['major']=10
+    ['version']=${POSTGRES_VERSION:-10.3}
+    ['file']="/tmp/postgresql-${PG['version']}.tar.bz2"
+    ['url']="https://ftp.postgresql.org/pub/source/v${PG['version']}/postgresql-${PG['version']}.tar.bz2"
+    ['sha256']="87584285af8c5fd6e599b4d9789f455f8cd55759ed81a9e575ebaebc7a03e796"
+    ['data']="${PGDATA:-/var/lib/postgresql/data}"
+)
 
-PG['major']=10
-PG['version']=${POSTGRES_VERSION:-10.2}
-PG['file']="/tmp/postgresql-${PG['version']}.tar.bz2"
-PG['url']="https://ftp.postgresql.org/pub/source/v${PG['version']}/postgresql-${PG['version']}.tar.bz2"
-PG['sha256']="6ea268780ee35e88c65cdb0af7955ad90b7d0ef34573867f223f14e43467931a"
-PG['data']="${PGDATA:-/var/lib/postgresql/data}"
 
 #directories
 declare -r pg_srcdir=/usr/src/postgresql

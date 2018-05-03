@@ -4,6 +4,7 @@
 set -o errexit
 set -o nounset
 #set -o xtrace
+export IFS=$'\t\n '
 
 
 # alpine includes "postgres" user/group in base install

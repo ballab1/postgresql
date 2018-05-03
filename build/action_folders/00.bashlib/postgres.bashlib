@@ -1,0 +1,21 @@
+#!/bin/bash
+#############################################################################
+
+function postgres.UID()
+{
+    local -r user_name="${1:-postgres}"
+    local -r default_uid=${2:-70}
+    
+    lib.lookupId "$user_name" 'passwd' "$default_uid"
+}
+export -f postgres.UID
+
+#############################################################################
+function postgres.GID()
+{
+    local -r group_name="${1:-postgres}"
+    local -r default_gid=${2:-70}
+    
+    lib.lookupId "$group_name" 'group' "$default_gid"
+}
+export -f postgres.GID 

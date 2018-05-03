@@ -1,17 +1,16 @@
-version: '3.5'
+version: '3.3'
 
 services:
     postgres:
         build:
             args:
-                CONTAINER_NAME: postgresql-10.2
-                CONTAINER_VERSION: 1.0.7
-                DEBUG_TRACE: 0
+                CBF_VERSION: "${CBF_VERSION:-}"
+                CONTAINER_NAME: postgres
+                CONTAINER_VERSION: ${CONTAINER_VERSION:-3.0.0}
                 FROM_BASE: base_container:${CONTAINER_TAG:-latest}
-            context: .
             cache_from:
                 - base_container:${CONTAINER_TAG:-latest}
-                - alpine:3.6
+                - alpine:3.8
             context: .
             dockerfile: Dockerfile
         container_name: postgres
@@ -19,7 +18,7 @@ services:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}
             POSTGRES_PASSWORD: postgres
         hostname: postgres
-        image: postgresql-10.3:${CONTAINER_TAG:-latest}
+        image: postgresql-10.4:${CONTAINER_TAG:-latest}
         logging:
             driver: json-file
             options:

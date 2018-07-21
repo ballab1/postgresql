@@ -1,4 +1,4 @@
-ARG FROM_BASE=base_container:${CONTAINER_TAG:-latest}
+ARG FROM_BASE=${DOCKER_REGISTRY:-}base_container:${CONTAINER_TAG:-latest}
 FROM $FROM_BASE
 
 # name and version of this docker image
@@ -19,7 +19,7 @@ ENV DEBUG_TRACE=0
 
 ARG POSTGRES_VERSION=10.4
 ARG QUANTILE_VERSION=quantile-1.1.2
-ARG TIMESCALE_VERSION=0.9.2
+ARG TIMESCALE_VERSION=0.10.1
 LABEL postgres_version=$POSTGRES_VERSION \
       quantile_version=$QUANTILE_VERSION \
       timescaledb_version=$TIMESCALE_VERSION

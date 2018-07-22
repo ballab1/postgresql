@@ -6,7 +6,6 @@ services:
             args:
                 CBF_VERSION: "${CBF_VERSION:-}"
                 CONTAINER_NAME: postgres
-                CONTAINER_VERSION: ${CONTAINER_VERSION:-3.0.0}
                 FROM_BASE: ${DOCKER_REGISTRY:-}base_container:${CONTAINER_TAG:-latest}
             cache_from:
                 - ${DOCKER_REGISTRY:-}alpine:3.8
@@ -19,6 +18,14 @@ services:
             POSTGRES_PASSWORD: postgres
         hostname: postgres
         image: ${DOCKER_REGISTRY:-}postgresql-10.4:${CONTAINER_TAG:-latest}
+        labels:
+            container.fingerprint: $CONTAINER_FINGERPRINT
+            container.git.branch: $CONTAINER_GIT_BRANCH
+            container.git.commit: $CONTAINER_GIT_COMMIT
+            container.git.url: $CONTAINER_GIT_URL
+            container.origin: $CONTAINER_ORIGIN
+            container.original.name: postgres
+            container.version: ${CONTAINER_VERSION:-3.0.0}
         logging:
             driver: json-file
             options:
@@ -31,4 +38,4 @@ services:
             - ./vols-ro/postgres-initdb:/docker-entrypoint-initdb.d
             - ./vols-rw/data:/var/lib/postgresql/data
             - ./vols-ro/etc:/etc/postgres
-            - ./vols-rw/log:/var/log/postgres 
+            - ./vols-rw/log:/var/log/postgres

@@ -1,4 +1,4 @@
-# postgres
+# postgresql
 
 About this Repo
 

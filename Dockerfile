@@ -14,12 +14,17 @@ COPY build Dockerfile /tmp/
 ENV DEBUG_TRACE=0
 
 
-ARG POSTGRES_VERSION=10.4
-ARG QUANTILE_VERSION=quantile-1.1.2
-ARG TIMESCALE_VERSION=0.10.1
-LABEL postgres_version=$POSTGRES_VERSION \
-      quantile_version=$QUANTILE_VERSION \
-      timescaledb_version=$TIMESCALE_VERSION
+# postgres version being bundled in this docker image
+ARG POSTGRES_VERSION=${POSTGRES_VERSION:-10.4}
+LABEL postgres.version=$POSTGRES_VERSION  
+
+# quantile version being bundled in this docker image
+ARG QUANTILE_VERSION=${QUANTILE_VERSION:-1.1.2}
+LABEL quantile.version=$QUANTILE_VERSION  
+
+# timescaledb version being bundled in this docker image
+ARG TIMESCALEDB_VERSION=${TIMESCALEDB_VERSION:-0.10.1}
+LABEL timescaledb.version=$TIMESCALEDB_VERSION  
 
 
 # make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default

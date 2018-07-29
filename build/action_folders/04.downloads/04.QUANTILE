@@ -4,8 +4,7 @@ declare -A QUANTILE=(
     ['version']=${QUANTILE_VERSION:?}
     ['file']="/tmp/quantile-${QUANTILE['version']}.tar.gz"
     ['dir']="/tmp/quantile-quantile-${QUANTILE['version']}"
-    ['url']="https://github.com/tvondra/quantile/archive/${QUANTILE['version']}.tar.gz"
+    ['url']="https://github.com/tvondra/quantile/archive/quantile-${QUANTILE['version']}.tar.gz"
     ['sha256_1.1.2']="fc24c2579bfc02eb2b6e8e66cb11d0e5f6e3b6df8fea44b28989173a907f899d"
     ['sha256']="${QUANTILE['sha256_'${QUANTILE['version']}]}"
-
 )

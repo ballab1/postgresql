@@ -4,6 +4,6 @@ set -o errexit
 set -o nounset
 
 tar xvf "${QUANTILE['file']}"
-cd "quantile-${QUANTILE['version']}"
+cd "${QUANTILE['dir']}"
 make
 make install    

@@ -15,7 +15,7 @@ ENV DEBUG_TRACE=0
 
 
 # postgres version being bundled in this docker image
-ARG POSTGRES_VERSION=10.4
+ARG POSTGRES_VERSION=10.5
 LABEL postgres.version=$POSTGRES_VERSION  
 
 # quantile version being bundled in this docker image

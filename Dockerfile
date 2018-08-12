@@ -4,7 +4,7 @@ FROM $FROM_BASE
 # name and version of this docker image
 ARG CONTAINER_NAME=postgres
 # Specify CBF version to use with our configuration and customizations
-ARG CBF_VERSION="${CBF_VERSION}"
+ARG CBF_VERSION
 
 # include our project files
 COPY build Dockerfile /tmp/
@@ -15,15 +15,15 @@ ENV DEBUG_TRACE=0
 
 
 # postgres version being bundled in this docker image
-ARG POSTGRES_VERSION=${POSTGRES_VERSION:-10.4}
+ARG POSTGRES_VERSION=10.5
 LABEL postgres.version=$POSTGRES_VERSION  
 
 # quantile version being bundled in this docker image
-ARG QUANTILE_VERSION=${QUANTILE_VERSION:-1.1.2}
+ARG QUANTILE_VERSION=1.1.2
 LABEL quantile.version=$QUANTILE_VERSION  
 
 # timescaledb version being bundled in this docker image
-ARG TIMESCALEDB_VERSION=${TIMESCALEDB_VERSION:-0.10.1}
+ARG TIMESCALEDB_VERSION=0.11.0
 LABEL timescaledb.version=$TIMESCALEDB_VERSION  
 
 
@@ -37,7 +37,7 @@ ENV LANG en_US.utf8 \
 RUN set -o verbose \
     && chmod u+rwx /tmp/build.sh \
     && /tmp/build.sh "$CONTAINER_NAME" "$DEBUG_TRACE"
-RUN [ $DEBUG_TRACE != 0 ] || rm -rf /tmp/* \n 
+RUN [ $DEBUG_TRACE != 0 ] || rm -rf /tmp/*
 
 
 EXPOSE 5432

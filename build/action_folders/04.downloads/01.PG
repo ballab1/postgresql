@@ -5,7 +5,13 @@ declare -A PG=(
     ['version']=${POSTGRES_VERSION:?}
     ['file']="/tmp/postgresql-${PG['version']}.tar.bz2"
     ['url']="https://ftp.postgresql.org/pub/source/v${PG['version']}/postgresql-${PG['version']}.tar.bz2"
+    ['sha256_9.6.10']="b4aae2ffb3812b2bd39fc4e065613969af7dadd72ad6ad23abb8a2bf4c02c203"
+    ['sha256_10.0']="86c83a664b770114861bc96a9eca3c3efe28c0384c6a71c610426cd42b0164fb"
+    ['sha256_10.1']="cdebdeeae50744f3b7e4823b55decfbf727fb4c16bb736488984007d7b1a4f76"
+    ['sha256_10.2']="6bbd81460bcd22379fc2267821e03e213b39d02f2553a0f63d85f94ce0416c6c"
+    ['sha256_10.3']="87584285af8c5fd6e599b4d9789f455f8cd55759ed81a9e575ebaebc7a03e796"
     ['sha256_10.4']="1b60812310bd5756c62d93a9f93de8c28ea63b0df254f428cd1cf1a4d9020048"
+    ['sha256_10.5']="6c8e616c91a45142b85c0aeb1f29ebba4a361309e86469e0fb4617b6a73c4011"
     ['sha256']="${PG['sha256_'${PG['version']}]}"
     ['data']="${PGDATA:-/var/lib/postgresql/data}"
 )

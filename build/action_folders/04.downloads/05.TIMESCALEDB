@@ -4,5 +4,7 @@ declare -A TIMESCALEDB=(
     ['version']=${TIMESCALEDB_VERSION:-0.10.1}
     ['file']="/tmp/timescaledb-${TIMESCALEDB['version']}.tar.gz"
     ['url']="https://github.com/timescale/timescaledb/archive/${TIMESCALEDB['version']}.tar.gz"
-    ['sha256']="79dc9f53db14544c6a559f4f2f917348efcf502aef5aec599b3f532c646a817a"
+    ['sha256_0.10.1']="79dc9f53db14544c6a559f4f2f917348efcf502aef5aec599b3f532c646a817a"
+    ['sha256_0.11.0']="dc6112be5314068a1b317936ad8bed2f4621a7e490e559cfbe160889d01ea690"
+    ['sha256']="${TIMESCALEDB['sha256_'${TIMESCALEDB['version']}]}"
 )

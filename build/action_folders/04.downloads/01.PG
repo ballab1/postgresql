@@ -11,7 +11,7 @@ declare -A PG=(
     ['sha256_10.2']="6bbd81460bcd22379fc2267821e03e213b39d02f2553a0f63d85f94ce0416c6c"
     ['sha256_10.3']="87584285af8c5fd6e599b4d9789f455f8cd55759ed81a9e575ebaebc7a03e796"
     ['sha256_10.4']="1b60812310bd5756c62d93a9f93de8c28ea63b0df254f428cd1cf1a4d9020048"
-    ['sha256_10.5']="13be7053b1d8ad4e24943b24d80170574fc701b49b3f14e68a5f1bda452ce3d1"
+    ['sha256_10.5']="6c8e616c91a45142b85c0aeb1f29ebba4a361309e86469e0fb4617b6a73c4011"
     ['sha256']="${PG['sha256_'${PG['version']}]}"
     ['data']="${PGDATA:-/var/lib/postgresql/data}"
 )

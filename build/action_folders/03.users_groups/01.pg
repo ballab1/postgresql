@@ -6,7 +6,7 @@ declare -A pg=(
      ['group']=${PG_GROUP:-postgres}
      ['gid']=${PG_GID:-$(postgres.GID "$PG_GROUP")}
      ['home']="${PGDATA:-/var/lib/postgresql/data}"
-     ['shell']=/sbin/bash
+     ['shell']=/bin/bash
 )
 : ${pg['uid']:=1002}
 : ${pg['gid']:=1002}

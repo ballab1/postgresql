@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p "$postgresHome"
+mkdir -p "${PG['home']}"
 mkdir -p /var/run/postgresql
 mkdir -p "${PG['data']}"
 

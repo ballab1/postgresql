@@ -16,8 +16,7 @@ declare -A PG=(
     ['data']="${PGDATA:-/var/lib/postgresql/data}"
 )
 
-
-#directories
+# directories
 declare -r pg_srcdir=/usr/src/postgresql
 declare postgresHome="$(getent passwd postgres | cut -d: -f6)"
 [[ -z $postgresHome ]] && postgresHome='/var/lib/postgresql'

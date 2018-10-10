@@ -6,5 +6,7 @@ declare -A TIMESCALEDB=(
     ['url']="https://github.com/timescale/timescaledb/archive/${TIMESCALEDB['version']}.tar.gz"
     ['sha256_0.10.1']="79dc9f53db14544c6a559f4f2f917348efcf502aef5aec599b3f532c646a817a"
     ['sha256_0.11.0']="dc6112be5314068a1b317936ad8bed2f4621a7e490e559cfbe160889d01ea690"
+    ['sha256_0.12.0']="94e0069275cb5e38d27ec96ecbd5d7f41cbeed0da810c4ae76e41a0b9caff07d"
+    ['sha256_0.12.1']="40667715d0cdcd3eb57a3dd5a23a6c0e85e394e9096eb100b913e8c5489719cd"
     ['sha256']="${TIMESCALEDB['sha256_'${TIMESCALEDB['version']}]}"
 )

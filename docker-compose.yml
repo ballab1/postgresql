@@ -5,9 +5,13 @@ services:
         build:
             args:
                 CBF_VERSION: ${CBF_VERSION:-}
+                CG_VERSION: ${CG_VERSION:-7d3d27baf8107b630586c962c057e22149653deb}
+                CS_VERSION: ${CS_VERSION:-7d3d27baf8107b630586c962c057e22149653deb}
+                POSTGRES_VERSION: ${POSTGRES_VERSION:-10.5}
+                QUANTILE_VERSION: ${QUANTILE_VERSION:-1.1.2}
+                TIMESCALEDB_VERSION: ${TIMESCALEDB_VERSION:-0.12.1}
                 CONTAINER_NAME: postgres
                 FROM_BASE: ${DOCKER_REGISTRY:-}${CONTAINER_OS:-}base_container:${BASE_TAG:-latest}
-                POSTGRES_VERSION: ${POSTGRES_VERSION:-10.5}
             cache_from:
                 - ${DOCKER_REGISTRY:-}${CONTAINER_OS:-}alpine:3.8
                 - ${DOCKER_REGISTRY:-}${CONTAINER_OS:-}base_container:${BASE_TAG:-latest}

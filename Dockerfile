@@ -14,6 +14,14 @@ COPY build Dockerfile /tmp/
 ENV DEBUG_TRACE=0
 
 
+# config.guess version being bundled in this docker image
+ARG CG_VERSION=7d3d27baf8107b630586c962c057e22149653deb
+LABEL config.guess.version=$CG_VERSION
+
+# config.sub version being bundled in this docker image
+ARG CS_VERSION=7d3d27baf8107b630586c962c057e22149653deb
+LABEL config.sub.version=$CS_VERSION
+
 # postgres version being bundled in this docker image
 ARG POSTGRES_VERSION=10.5
 LABEL postgres.version=$POSTGRES_VERSION  

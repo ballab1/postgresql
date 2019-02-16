@@ -1,9 +1,9 @@
 #!/bin/bash -x
 
 #set -o xtrace
-#set -o verbose 
+#set -o verbose
 #set -o errexit
-set -o nounset  
+set -o nounset
 
 #declare -r POSTGRESQL_VERSION=93
 #declare -r POSTGRESQL_VERSION=10
@@ -27,9 +27,9 @@ function makeChanges()
 
   echo "changing to PostgreSQL v$version"
   systemctl stop postgresql
-  cd /usr/bin && removeLinks 
+  cd /usr/bin && removeLinks
   cd /etc/alternatives && removeLinks
- 
+
   [[ -L $REFDIR ]] && rm "$REFDIR"
   mkdir -p "{version_dir}"
   ln -s "${version_dir}" "$REFDIR"
@@ -48,7 +48,7 @@ function makeDockerShells()
   rm *
   while read fl; do
     echo "docker exec postgresql $fl "'$@' > $fl
-    chmod 755 $fl
+    chmod a+rx $fl
   done< <(docker exec postgresql ls -1 /usr/local/bin/)
 }
 

@@ -1,5 +1,8 @@
 version: '3.3'
 
+# repo: https://github/ballab1/postgresql.git
+# containerOS: alpine
+
 services:
     postgres:
         build:
@@ -19,13 +22,13 @@ services:
             dockerfile: Dockerfile
             labels:
                 container.build.time: $CONTAINER_BUILD_TIME
-                container.cbf.version: $CBF_VERSION
                 container.fingerprint: $CONTAINER_FINGERPRINT
                 container.git.refs: $CONTAINER_GIT_REFS
                 container.git.commit: $CONTAINER_GIT_COMMIT
                 container.git.url: $CONTAINER_GIT_URL
                 container.origin: $CONTAINER_ORIGIN
                 container.original.name: postgresql
+                version.cbf: $CBF_VERSION
         container_name: postgres
         environment:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}

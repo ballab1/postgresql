@@ -8,7 +8,7 @@ set -o nounset
 declare -r CONTAINER='postgresql:10.1'
 declare -r CONTAINER_NAME='postgresql'
 declare -r PROGNAME="$( basename "${BASH_SOURCE[0]}" )"
-declare -r TOOLS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+declare -r TOOLS="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"  
 declare USECOMPOSE=1
 
 [[ "$(docker --version)" = 'Docker version 1.6.2, build 7c8fca2' ]] && USECOMPOSE=0
@@ -21,7 +21,7 @@ function build() {
 
 #----------------------------------------------------
 function logs() {
-    if [[ $USECOMPOSE -eq 1 ]]; then
+    if [[ $USECOMPOSE -eq 1 ]]; then 
         docker-compose logs
     else
         docker logs "${CONTAINER_NAME}"
@@ -50,7 +50,7 @@ process_arguments()
 
 #----------------------------------------------------
 function reload() {
-    if [[ $USECOMPOSE -eq 1 ]]; then
+    if [[ $USECOMPOSE -eq 1 ]]; then 
         docker-compose restart
     else
         stop
@@ -60,7 +60,7 @@ function reload() {
 
 #----------------------------------------------------
 function start() {
-    if [[ $USECOMPOSE -eq 1 ]]; then
+    if [[ $USECOMPOSE -eq 1 ]]; then 
         docker-compose up -d
     else
         ( docker rm -f "${CONTAINER_NAME}" > /dev/null 2>&1 ) || true
@@ -79,7 +79,7 @@ function start() {
 
 #----------------------------------------------------
 function status() {
-    if [[ $USECOMPOSE -eq 1 ]]; then
+    if [[ $USECOMPOSE -eq 1 ]]; then 
         docker-compose top
     else
         docker inspect "${CONTAINER_NAME}"
@@ -88,7 +88,7 @@ function status() {
 
 #----------------------------------------------------
 function stop() {
-    if [[ $USECOMPOSE -eq 1 ]]; then
+    if [[ $USECOMPOSE -eq 1 ]]; then 
         docker-compose down
     else
         docker stop "${CONTAINER_NAME}"
@@ -113,7 +113,7 @@ Usage:
         -r --reload            Reload "${CONTAINER_NAME}" process
         -s --status            show current status
 
-Project: https://github.com/ballab1/"${CONTAINER_NAME}"
+Project: https://eos2git.cec.lab.emc.com/DevEnablement/"${CONTAINER_NAME}"
 
 EOF
     exit -1

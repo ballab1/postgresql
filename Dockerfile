@@ -16,23 +16,23 @@ ENV DEBUG_TRACE=0
 
 # config.guess version being bundled in this docker image
 ARG CG_VERSION=7d3d27baf8107b630586c962c057e22149653deb
-LABEL config.guess.version=$CG_VERSION
+LABEL version.config.guess=$CG_VERSION
 
 # config.sub version being bundled in this docker image
 ARG CS_VERSION=7d3d27baf8107b630586c962c057e22149653deb
-LABEL config.sub.version=$CS_VERSION
+LABEL version.config.sub=$CS_VERSION
 
 # postgres version being bundled in this docker image
 ARG POSTGRES_VERSION=10.5
-LABEL postgres.version=$POSTGRES_VERSION  
+LABEL version.postgres=$POSTGRES_VERSION  
 
 # quantile version being bundled in this docker image
 ARG QUANTILE_VERSION=1.1.2
-LABEL quantile.version=$QUANTILE_VERSION  
+LABEL version.quantile=$QUANTILE_VERSION  
 
 # timescaledb version being bundled in this docker image
 ARG TIMESCALEDB_VERSION=0.11.0
-LABEL timescaledb.version=$TIMESCALEDB_VERSION  
+LABEL version.timescaledb=$TIMESCALEDB_VERSION  
 
 
 # make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default

@@ -6,4 +6,4 @@ chown "${pg['user']}:${pg['group']}" -R /var/run/postgresql
 
 chmod 2777 /var/run/postgresql
 # this 777 will be replaced by 700 at runtime (allows semi-arbitrary "--user" values)
-chmod 777 "${PG['data']}"
+chmod a+rxw "${PG['data']}"

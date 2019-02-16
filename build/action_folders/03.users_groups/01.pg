@@ -2,9 +2,9 @@
 
 declare -A pg=(
      ['user']=${PG_USER:-postgres}
-     ['uid']=${PG_UID:-$(postgres.UID "$PG_USER")}
+     ['uid']=${PG_UID:-$(postgres.UID "${PG_USER:-}")}
      ['group']=${PG_GROUP:-postgres}
-     ['gid']=${PG_GID:-$(postgres.GID "$PG_GROUP")}
+     ['gid']=${PG_GID:-$(postgres.GID "${PG_GROUP:-}")}
      ['home']="${PGDATA:-/var/lib/postgresql/data}"
      ['shell']=/bin/bash
 )

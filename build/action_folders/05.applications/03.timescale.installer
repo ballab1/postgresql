@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+
+tar xvf "${TIMESCALEDB['file']}"
+cd "timescaledb-${TIMESCALEDB['version']}"
+
+./bootstrap
+cd build
+make
+make install

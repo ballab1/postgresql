@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+
+tar xvf "${QUANTILE['file']}"
+cd "${QUANTILE['dir']}"
+make
+make install    

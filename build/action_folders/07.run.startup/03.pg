@@ -1,0 +1,9 @@
+#!/bin/bash
+
+chown "${pg['user']}:${pg['group']}" -R "${PG['home']}"
+chown "${pg['user']}:${pg['group']}" -R "${PG['data']}"
+chown "${pg['user']}:${pg['group']}" -R /var/run/postgresql
+
+chmod 2777 /var/run/postgresql
+# this 777 will be replaced by 700 at runtime (allows semi-arbitrary "--user" values)
+chmod a+rxw "${PG['data']}"

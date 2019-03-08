@@ -1,0 +1,8 @@
+# postgres
+
+declare -A CG=()
+CG['version']=${CG_VERSION:?}
+CG['file']="/tmp/config.guess.${CG['version']}"
+CG['url']="https://git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=${CG['version']}"
+CG['sha256_7d3d27baf8107b630586c962c057e22149653deb']="f71db9d796b6f173a6fdb4ddd08424e02085b24156018cd02063d159c9d17bb2"
+CG['sha256']="${CG['sha256_'${CG['version']}]}"

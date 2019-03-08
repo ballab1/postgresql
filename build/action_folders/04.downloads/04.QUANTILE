@@ -1,0 +1,9 @@
+# quantile
+
+declare -A QUANTILE=()
+QUANTILE['version']=${QUANTILE_VERSION:?}
+QUANTILE['file']="/tmp/quantile-${QUANTILE['version']}.tar.gz"
+QUANTILE['dir']="/tmp/quantile-quantile-${QUANTILE['version']}"
+QUANTILE['url']="https://github.com/tvondra/quantile/archive/quantile-${QUANTILE['version']}.tar.gz"
+QUANTILE['sha256_1.1.2']="fc24c2579bfc02eb2b6e8e66cb11d0e5f6e3b6df8fea44b28989173a907f899d"
+QUANTILE['sha256']="${QUANTILE['sha256_'${QUANTILE['version']}]}"

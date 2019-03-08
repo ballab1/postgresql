@@ -1,0 +1,35 @@
+# postgres
+
+# directories
+declare -r pg_srcdir=/usr/src/postgresql
+declare postgresHome="$(getent passwd postgres | cut -d: -f6)"
+[[ -z $postgresHome ]] && postgresHome='/var/lib/postgresql'
+
+declare -A PG=()
+PG['major']=10
+PG['version']=${POSTGRES_VERSION:?}
+PG['file']="/tmp/postgresql-${PG['version']}.tar.bz2"
+PG['url']="https://ftp.postgresql.org/pub/source/v${PG['version']}/postgresql-${PG['version']}.tar.bz2"
+
+# org values. No idea why they changed
+#PG['sha256_9.6.10']="b4aae2ffb3812b2bd39fc4e065613969af7dadd72ad6ad23abb8a2bf4c02c203"
+#PG['sha256_10.0']="86c83a664b770114861bc96a9eca3c3efe28c0384c6a71c610426cd42b0164fb"
+#PG['sha256_10.1']="cdebdeeae50744f3b7e4823b55decfbf727fb4c16bb736488984007d7b1a4f76"
+#PG['sha256_10.2']="6bbd81460bcd22379fc2267821e03e213b39d02f2553a0f63d85f94ce0416c6c"
+#PG['sha256_10.3']="87584285af8c5fd6e599b4d9789f455f8cd55759ed81a9e575ebaebc7a03e796"
+
+# current values
+PG['sha256_9.6.10']="8615acc56646401f0ede97a767dfd27ce07a8ae9c952afdb57163b7234fe8426"
+PG['sha256_10.0']="712f5592e27b81c5b454df96b258c14d94b6b03836831e015c65d6deeae57fd1"
+PG['sha256_10.1']="3ccb4e25fe7a7ea6308dea103cac202963e6b746697366d72ec2900449a5e713"
+PG['sha256_10.2']="fe32009b62ddb97f7f014307ce9d0edb6972f5a698e63cb531088e147d145bad"
+PG['sha256_10.3']="6ea268780ee35e88c65cdb0af7955ad90b7d0ef34573867f223f14e43467931a"
+PG['sha256_10.4']="1b60812310bd5756c62d93a9f93de8c28ea63b0df254f428cd1cf1a4d9020048"
+PG['sha256_10.5']="6c8e616c91a45142b85c0aeb1f29ebba4a361309e86469e0fb4617b6a73c4011"
+PG['sha256_10.6']="68a8276f08bda8fbefe562faaf8831cb20664a7a1d3ffdbbcc5b83e08637624b"
+PG['sha256_11.0']="bf9bba03d0c3902c188af12e454b35343c4a9bf9e377ec2fe50132efb44ef36b"
+PG['sha256_11.1']="90815e812874831e9a4bf6e1136bf73bc2c5a0464ef142e2dfea40cda206db08"
+PG['sha256_11.2']="2676b9ce09c21978032070b6794696e0aa5a476e3d21d60afc036dc0a9c09405"
+PG['sha256']="${PG['sha256_'${PG['version']}]}"
+PG['data']="${PGDATA:-/var/lib/postgresql/data}"
+PG['home']="$postgresHome"

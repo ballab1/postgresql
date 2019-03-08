@@ -1,0 +1,18 @@
+#!/bin/bash
+
+declare -ar env_pg=(
+    "POSTGRES_VERSION=${POSTGRES_VERSION:?}"
+    "QUANTILE_VERSION=${QUANTILE_VERSION:?}"
+    "TIMESCALEDB_VERSION=${TIMESCALEDB_VERSION:?}"
+    'PGDATA="${PGDATA:-/var/lib/postgresql/data}"'
+    'PG_USER=${PG_USER:-postgres}'
+    'PG_UID=${PG_UID:-$(postgres.UID "$PG_USER")}'
+    'PG_GROUP=${PG_GROUP:-postgres}'
+    'PG_GID=${PG_GID:-$(postgres.GID "$PG_GROUP")}'
+    'WORKDIR=${PGDATA}'
+    'USER=${PG_UID}'
+)
+
+crf.removeFromRuntimeEnvironment 'WORKDIR' 
+crf.removeFromRuntimeEnvironment 'USER' 
+crf.updateRuntimeEnvironment "${env_pg[@]}" 

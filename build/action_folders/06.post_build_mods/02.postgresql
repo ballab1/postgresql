@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mkdir -p "${PG['home']}"
+mkdir -p /var/run/postgresql
+mkdir -p "${PG['data']}"
+
+mkdir /docker-entrypoint-initdb.d
+chmod a+rx /usr/local/bin/*
+
+# make the sample config easier to munge (and "correct by default")
+sed -ri "s!^#?(listen_addresses)\s*=\s*\S+.*!\1 = '*'!" /usr/local/share/postgresql/postgresql.conf.sample

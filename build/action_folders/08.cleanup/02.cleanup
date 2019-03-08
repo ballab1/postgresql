@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /
+rm -rf "$pg_srcdir"
+rm -rf /usr/src/quantile
+rm -rf /usr/src/timescaledb
+rm -rf /usr/local/share/doc
+rm -rf /usr/local/share/man
+
+find /usr/local -name '*.a' -type f -delete

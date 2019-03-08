@@ -1,0 +1,13 @@
+#!/bin/bash
+
+declare -A pg=(
+     ['user']=${PG_USER:-postgres}
+     ['uid']=${PG_UID:-$(postgres.UID "$PG_USER")}
+     ['group']=${PG_GROUP:-postgres}
+     ['gid']=${PG_GID:-$(postgres.GID "$PG_GROUP")}
+     ['home']="${PGDATA:-/var/lib/postgresql/data}"
+     ['shell']=/sbin/bash
+)
+: ${pg['uid']:=1002}
+: ${pg['gid']:=1002}
+

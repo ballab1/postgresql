@@ -1,0 +1,17 @@
+# postgres
+
+declare -A PG=(
+    ['major']=10
+    ['version']=${POSTGRES_VERSION:-10.4}
+    ['file']="/tmp/postgresql-${PG['version']}.tar.bz2"
+    ['url']="https://ftp.postgresql.org/pub/source/v${PG['version']}/postgresql-${PG['version']}.tar.bz2"
+    ['sha256']="1b60812310bd5756c62d93a9f93de8c28ea63b0df254f428cd1cf1a4d9020048"
+    ['data']="${PGDATA:-/var/lib/postgresql/data}"
+)
+
+
+#directories
+declare -r pg_srcdir=/usr/src/postgresql
+declare postgresHome="$(getent passwd postgres | cut -d: -f6)"
+[[ -z $postgresHome ]] && postgresHome='/var/lib/postgresql'
+PG['home']="$postgresHome"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+
+tar xvf "${QUANTILE['file']}"
+cd "quantile-${QUANTILE['version']}"
+make
+make install    

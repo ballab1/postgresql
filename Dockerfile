@@ -23,7 +23,7 @@ ARG CS_VERSION=7d3d27baf8107b630586c962c057e22149653deb
 LABEL version.config.sub=$CS_VERSION
 
 # postgres version being bundled in this docker image
-ARG POSTGRES_VERSION=10.5
+ARG POSTGRES_VERSION=11.3
 LABEL version.postgres=$POSTGRES_VERSION  
 
 # quantile version being bundled in this docker image
@@ -31,7 +31,7 @@ ARG QUANTILE_VERSION=1.1.2
 LABEL version.quantile=$QUANTILE_VERSION  
 
 # timescaledb version being bundled in this docker image
-ARG TIMESCALEDB_VERSION=0.11.0
+ARG TIMESCALEDB_VERSION=1.3.0
 LABEL version.timescaledb=$TIMESCALEDB_VERSION  
 
 

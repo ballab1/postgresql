@@ -1,10 +1,13 @@
 version: '3.3'
 
-# repo: https://github/ballab1/postgresql.git
+# this is a SAMPLE file. Do not use for build or deployments
+
+# use the following to restrict which OS this is built on
 # containerOS: alpine
 
 services:
     postgres:
+# build arguments, only needed for building
         build:
             args:
                 CBF_VERSION: ${CBF_VERSION:-}
@@ -28,11 +31,37 @@ services:
                 container.git.url: $CONTAINER_GIT_URL
                 container.origin: $CONTAINER_ORIGIN
                 container.original.name: postgresql
-                container.parent: $CONTAINER_PARENT
                 version.cbf: $CBF_VERSION
         container_name: postgres
+# common arguments, for building and deploy 
         environment:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}
             POSTGRES_PASSWORD_FILE: /run/secrets/postgres.pwd
         hostname: postgres
-        image: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/postgresql/${POSTGRES_VERSION:-11.3}:${CONTAINER_TAG:-latest}
+        image: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/postgresql/${POSTGRES_VERSION:-10.5}:${CONTAINER_TAG:-latest}
+# deploy arguments, not needed for building
+        logging:                              # limit size of logs @runtime so that we do not run out of space 
+            driver: json-file
+            options:
+                max-file: "3"
+                max-size: "10m"
+        ports:                                #ports exposed 
+            - 5432:5432
+        restart: unless-stopped               # only use when building a 'service container'
+# references to 'secrets' section below
+        secrets:
+            - postgres.pwd
+        volumes:
+# startup (load DB) files
+            - ./vols-ro/postgres-initdb:/docker-entrypoint-initdb.d
+# database files
+            - ./vols-rw/data:/var/lib/postgresql/data
+# database configuration
+            - ./vols-ro/etc:/etc/postgres
+# application logs
+            - ./vols-rw/log:/var/log/postgres
+
+secrets:
+# location of secrets files in host filesystem
+   postgres.pwd:
+     file: ~/.secrets/postgres.pwd

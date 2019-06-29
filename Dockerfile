@@ -23,7 +23,7 @@ ARG CS_VERSION=7d3d27baf8107b630586c962c057e22149653deb
 LABEL version.config.sub=$CS_VERSION
 
 # postgres version being bundled in this docker image
-ARG POSTGRES_VERSION=11.3
+ARG POSTGRES_VERSION=11.4
 LABEL version.postgres=$POSTGRES_VERSION  
 
 # quantile version being bundled in this docker image

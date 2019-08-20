@@ -35,4 +35,4 @@ services:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}
             POSTGRES_PASSWORD_FILE: /run/secrets/postgres.pwd
         hostname: postgres
-        image: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/postgresql/${POSTGRES_VERSION:-11.4}:${CONTAINER_TAG:-latest}
+        image: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/postgresql/${POSTGRES_VERSION:-11.5}:${CONTAINER_TAG:-latest}

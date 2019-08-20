@@ -32,6 +32,7 @@ PG['sha256_11.1']="90815e812874831e9a4bf6e1136bf73bc2c5a0464ef142e2dfea40cda206d
 PG['sha256_11.2']="2676b9ce09c21978032070b6794696e0aa5a476e3d21d60afc036dc0a9c09405"
 PG['sha256_11.3']="2a85e082fc225944821dfd23990e32dfcd2284c19060864b0ad4ca537d30522d"
 PG['sha256_11.4']="02802ddffd1590805beddd1e464dd28a46a41a5f1e1df04bab4f46663195cc8b"
+PG['sha256_11.5']="7fdf23060bfc715144cbf2696cf05b0fa284ad3eb21f0c378591c6bca99ad180"
 PG['sha256']="${PG['sha256_'${PG['version']}]}"
 PG['data']="${PGDATA:-/var/lib/postgresql/data}"
 PG['home']="$postgresHome"

@@ -6,7 +6,7 @@ set -o nounset
 tar xvf "${TIMESCALEDB['file']}"
 cd "timescaledb-${TIMESCALEDB['version']}"
 
-./bootstrap
+./bootstrap -DREGRESS_CHECKS=OFF
 cd build
 make
 make install

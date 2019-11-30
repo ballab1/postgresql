@@ -30,8 +30,8 @@ awk '$1 == "#define" \
 grep '/var/run/postgresql' src/include/pg_config_manual.h.new && mv src/include/pg_config_manual.h.new src/include/pg_config_manual.h
 
 # explicitly update autoconf config.guess and config.sub so they support more arches/libcs
-cp "${CG['file']}" config/config.guess
-cp "${CS['file']}" config/config.sub
+#cp "${CG['file']}" config/config.guess
+#cp "${CS['file']}" config/config.sub
     
 # configure options taken from:
 # https://anonscm.debian.org/cgit/pkg-postgresql/postgresql.git/tree/debian/rules?h=9.5

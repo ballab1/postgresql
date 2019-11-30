@@ -6,7 +6,13 @@ set -o nounset
 tar xvf "${TIMESCALEDB['file']}"
 cd "timescaledb-${TIMESCALEDB['version']}"
 
-./bootstrap -DREGRESS_CHECKS=OFF
-cd build
-make
-make install
+case $POSTGRES_VERSION in
+  12.0|12.1)  # timescaldb not yet supported on these versions
+    ;;
+  *)
+    ./bootstrap -DREGRESS_CHECKS=OFF
+    cd build
+    make
+    make install
+    ;;
+esac

@@ -2,8 +2,22 @@
 
 declare -A QUANTILE=()
 QUANTILE['version']=${QUANTILE_VERSION:?}
-QUANTILE['file']="/tmp/quantile-${QUANTILE['version']}.tar.gz"
-QUANTILE['dir']="/tmp/quantile-quantile-${QUANTILE['version']}"
-QUANTILE['url']="https://github.com/tvondra/quantile/archive/quantile-${QUANTILE['version']}.tar.gz"
-QUANTILE['sha256_1.1.2']="fc24c2579bfc02eb2b6e8e66cb11d0e5f6e3b6df8fea44b28989173a907f899d"
+
+QUANTILE['commit_1.1.2']="b5560f4a637e25b60ca4825c19f5140f4a119237"
+QUANTILE['commit_1.1.4']="a4fd9cb4d903ebb4fc2afd85197cdae8309d3862"
+QUANTILE['commit_1.1.5']="56dcf52724d7b618cfe48b85b1cf16044fb8e715"
+QUANTILE['commit_1.1.7']="244b6285e2c6a8d73bc555d7103200985e371bfa"
+
+#QUANTILE['name']="quantile-${QUANTILE['version']}"
+#QUANTILE['sha256_1.1.2']="fc24c2579bfc02eb2b6e8e66cb11d0e5f6e3b6df8fea44b28989173a907f899d"
+
+QUANTILE['name']="${QUANTILE['commit_'${QUANTILE['version']}]}"
+QUANTILE['dir']="/tmp/quantile-${QUANTILE['name']}"
+QUANTILE['file']="/tmp/${QUANTILE['name']}.tar.gz"
+
+QUANTILE['url']="https://github.com/tvondra/quantile/archive/${QUANTILE['name']}.tar.gz"
+QUANTILE['sha256_1.1.2']="b8113d419c46837930b98b8dafef882818c8372d6aefd54b9983ec8cc8812676"
+QUANTILE['sha256_1.1.4']="473cdfd7cd908354e1cb381e56dd77a5c8da7b8bc938961e26c02a1261f83f66"
+QUANTILE['sha256_1.1.5']="63c1b5cefdf17ef726d70be18d73b97cc5ed46368e79171151e5504696f7cc51"
+QUANTILE['sha256_1.1.7']="4f53bad91487994eada1a9a16dae5e01bd4b1733ba8cb67c2e1bb298b3817063"
 QUANTILE['sha256']="${QUANTILE['sha256_'${QUANTILE['version']}]}"

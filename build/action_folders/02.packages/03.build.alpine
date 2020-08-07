@@ -19,7 +19,7 @@ declare -a PKGS=( bison
                   perl-ipc-run
                   perl-utils
                   py2-pip
-                  python2-dev
+                  python3-dev
                   tar
                   util-linux-dev
                   zlib-dev )

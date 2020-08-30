@@ -18,7 +18,7 @@ declare -a PKGS=( bison
                   openldap-dev
                   perl-ipc-run
                   perl-utils
-                  py2-pip
+                  py3-pip
                   python3-dev
                   tar
                   util-linux-dev

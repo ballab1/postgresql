@@ -1,7 +1,7 @@
 # timescaledb
 
 declare -A TIMESCALEDB=()
-TIMESCALEDB['version']=${TIMESCALEDB_VERSION:-1.6.1}
+TIMESCALEDB['version']=${TIMESCALEDB_VERSION:-2.1.0}
 TIMESCALEDB['file']="/tmp/timescaledb-${TIMESCALEDB['version']}.tar.gz"
 TIMESCALEDB['url']="https://github.com/timescale/timescaledb/archive/${TIMESCALEDB['version']}.tar.gz"
 TIMESCALEDB['sha256_0.10.1']="79dc9f53db14544c6a559f4f2f917348efcf502aef5aec599b3f532c646a817a"

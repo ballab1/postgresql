@@ -19,7 +19,7 @@ services:
                 CONTAINER_NAME: postgres
                 FROM_BASE: ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
             cache_from:
-                - ${DOCKER_REGISTRY:-ubuntu-s2:5000/}thirdparty/${CONTAINER_OS:-alpine}:${OS_VERSION:-3.12.0}
+                - ${DOCKER_REGISTRY:-ubuntu-s2:5000/}thirdparty/${CONTAINER_OS:-alpine}:${OS_VERSION:-3.12.4}
                 - ${DOCKER_REGISTRY:-ubuntu-s2:5000/}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
             context: .
             dockerfile: Dockerfile

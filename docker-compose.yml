@@ -8,15 +8,13 @@ services:
         build:
             args:
                 CBF_VERSION: ${CBF_VERSION:-}
-                CG_VERSION: ${CG_VERSION:-7d3d27baf8107b630586c962c057e22149653deb}
-                CS_VERSION: ${CS_VERSION:-7d3d27baf8107b630586c962c057e22149653deb}
-                POSTGRES_VERSION: ${POSTGRES_VERSION:-13.2}
-                QUANTILE_VERSION: ${QUANTILE_VERSION:-1.1.2}
-                TIMESCALEDB_VERSION: ${TIMESCALEDB_VERSION:-0.12.1}
+                POSTGRES_VERSION: ${POSTGRES_VERSION:-13.3}
+                QUANTILE_VERSION: ${QUANTILE_VERSION:-1.1.7}
+                TIMESCALEDB_VERSION: ${TIMESCALEDB_VERSION:-2.2.1}
                 CONTAINER_NAME: postgres
                 FROM_BASE: ${DOCKER_REGISTRY:-s2.ubuntu.home:5000/}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
             cache_from:
-                - ${DOCKER_REGISTRY:-s2.ubuntu.home:5000/}thirdparty/${CONTAINER_OS:-alpine}:${OS_VERSION:-3.12.4}
+                - ${DOCKER_REGISTRY:-s2.ubuntu.home:5000/}thirdparty/${CONTAINER_OS:-alpine}:${OS_VERSION:-3.13.5}
                 - ${DOCKER_REGISTRY:-s2.ubuntu.home:5000/}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
             context: .
             dockerfile: Dockerfile

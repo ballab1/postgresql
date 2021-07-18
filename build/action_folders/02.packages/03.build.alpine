@@ -1,25 +1,24 @@
 # build Packages
 
-declare -a OPTS=( '--virtual' '.buildDependencies' )
-declare -a PKGS=( bison
-                  cmake
-                  coreutils
-                  dpkg
-                  dpkg-dev
+declare -a BUILD=( bison
+                   cmake
+                   dpkg
+                   dpkg-dev
+                   gcc
+                   git
+                   libc-dev
+                   libedit-dev
+                   libxml2-dev
+                   libxslt-dev
+                   linux-headers
+                   make
+                   openldap-dev
+                   py3-pip
+                   python3-dev
+                   util-linux-dev
+                   zlib-dev )
+declare -a PKGS=( coreutils
                   flex
-                  gcc
-                  git
-                  libc-dev
-                  libedit-dev
-                  libxml2-dev
-                  libxslt-dev
-                  linux-headers
-                  make
-                  openldap-dev
                   perl-ipc-run
                   perl-utils
-                  py3-pip
-                  python3-dev
-                  tar
-                  util-linux-dev
-                  zlib-dev )
+                  tar )

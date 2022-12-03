@@ -31,7 +31,7 @@ ARG QUANTILE_VERSION=1.1.2
 LABEL version.quantile=$QUANTILE_VERSION  
 
 # timescaledb version being bundled in this docker image
-ARG TIMESCALEDB_VERSION=2.7.2
+ARG TIMESCALEDB_VERSION=2.8.1
 LABEL version.timescaledb=$TIMESCALEDB_VERSION  
 
 

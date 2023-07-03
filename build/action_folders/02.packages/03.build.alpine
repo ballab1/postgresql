@@ -13,6 +13,8 @@ declare -a BUILD=( bison
                    linux-headers
                    make
                    openldap-dev
+                   openssl1.1-compat-dev
+                   openssl1.1-compat-libs-static
                    py3-pip
                    python3-dev
                    util-linux-dev

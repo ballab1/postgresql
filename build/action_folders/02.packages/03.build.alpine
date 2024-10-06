@@ -15,6 +15,7 @@ declare -a BUILD=( bison
                    openldap-dev
                    openssl1.1-compat-dev
                    openssl1.1-compat-libs-static
+                   perl-utils
                    py3-pip
                    python3-dev
                    util-linux-dev

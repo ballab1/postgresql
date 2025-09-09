@@ -11,10 +11,10 @@ services:
                 QUANTILE_VERSION: ${QUANTILE_VERSION:-1.1.7}
                 TIMESCALEDB_VERSION: ${TIMESCALEDB_VERSION:-2.2.1}
                 CONTAINER_NAME: postgres
-                FROM_BASE: ${DOCKER_REGISTRY:-/}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
+                FROM_BASE: ${DOCKER_REGISTRY:-}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
             cache_from:
-                - ${DOCKER_REGISTRY:-/}docker.io/${CONTAINER_OS:-alpine}:${OS_VERSION:-3.21.3}
-                - ${DOCKER_REGISTRY:-/}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
+                - ${DOCKER_REGISTRY:-}docker.io/${CONTAINER_OS:-alpine}:${OS_VERSION:-3.21.3}
+                - ${DOCKER_REGISTRY:-}${CONTAINER_OS:-alpine}/base_container:${BASE_TAG:-latest}
             context: .
             dockerfile: Dockerfile
             labels:
@@ -32,4 +32,4 @@ services:
             DEBUG_TRACE: ${DEBUG_TRACE:-0}
             POSTGRES_PASSWORD_FILE: /run/secrets/postgres.pwd
         hostname: postgres
-        image: ${DOCKER_REGISTRY:-/}${CONTAINER_OS:-alpine}/postgresql/${POSTGRES_VERSION:-17.4}:${CONTAINER_TAG:-latest}
+        image: ${DOCKER_REGISTRY:-}${CONTAINER_OS:-alpine}/postgresql/${POSTGRES_VERSION:-17.4}:${CONTAINER_TAG:-latest}
